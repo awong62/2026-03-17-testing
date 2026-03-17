@@ -1,0 +1,22 @@
+services:
+  rstudio:
+    build:
+      context: .
+      dockerfile: docker/rstudio.Dockerfile
+    ports:
+      - "8787:8787"
+    environment:
+      PASSWORD: rstudio
+    volumes:
+      - .:/home/rstudio/project
+    working_dir: /home/rstudio/project
+
+  vscode:
+    build:
+      context: .
+      dockerfile: docker/vscode.Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/project
+    working_dir: /project
